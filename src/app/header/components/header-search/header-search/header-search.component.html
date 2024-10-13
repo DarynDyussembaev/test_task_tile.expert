@@ -1,0 +1,37 @@
+<div
+  class="search-container"
+  appClickOutside
+  (clickOutsideEvent)="isSearchToggle(false)"
+>
+  <div class="search-button">
+    <img
+      src="../../../../../assets/icons/search.svg"
+      alt="search"
+      width="24px"
+      height="24px"
+      (click)="isSearchToggle(true)"
+    />
+  </div>
+  <div
+    [ngClass]="{
+      search: true,
+      active: isSearchOpen
+    }"
+  >
+    <div class="search-input">
+      <div class="back" (click)="isSearchToggle(false)">
+        <img src="../../../../../assets/icons/back.svg" alt="back" />
+      </div>
+      <input
+        type="text"
+        placeholder="Поисковый запрос"
+        (focus)="isFiltersOpenToggle(true)"
+      />
+      <button class="search-button">Искать</button>
+    </div>
+
+    @if (isFiltersOpen) {
+      <app-header-search-filters></app-header-search-filters>
+    }
+  </div>
+</div>
